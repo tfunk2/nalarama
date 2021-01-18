@@ -1,0 +1,41 @@
+.App {
+
+}
+
+.main-title {
+  text-align: center;
+}
+
+.percentage-input {
+  width: 30px;
+  text-align: center;
+}
+
+.breed-input {
+  text-align: center;
+  width: 90%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.breed-choices-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.datalist-container {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 20%;
+}
+
+.percent-remaining {
+  text-align: center;
+}
