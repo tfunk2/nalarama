@@ -315,7 +315,7 @@ function App() {
   ];
 
   const breedOptions = fullListOfBreeds.map((breed) => {
-    return <option value={breed} />;
+    return <option key={breed} value={breed} />;
   });
 
   const percentUsed = () => {
@@ -346,6 +346,66 @@ function App() {
       e.preventDefault();
     }
   };
+
+  const resetForm = () => {
+    setUserName("")
+    setUserEmail("")
+    setBreedOne("")
+    setBreedTwo("")
+    setBreedThree("")
+    setBreedFour("")
+    setBreedFive("")
+    setPercentOne("0")
+    setPercentTwo("0")
+    setPercentThree("0")
+    setPercentFour("0")
+    setPercentFive("0")
+    setPredictedWeight("1")
+  }
+
+  const handleSubmit = (event) => {
+    if(breedOne.length > 0 &&
+      breedTwo.length > 0 &&
+      breedThree.length > 0 &&
+      breedFour.length > 0 &&
+      breedFive.length > 0 &&
+      parseInt(percentOne) > 0 &&
+      parseInt(percentTwo) > 0 &&
+      parseInt(percentThree) > 0 &&
+      parseInt(percentFour) > 0 &&
+      parseInt(percentFive) > 0 &&
+      userName.length > 0 &&
+      userEmail.length > 0 &&
+      parseInt(predictedWeight) > 0) {
+        event.preventDefault()
+        fetch('http://localhost:3000/guess_form_submissions', {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+          },
+          body: JSON.stringify({ 
+            name: userName,
+            email: userEmail,
+            breed_one: breedOne,
+            breed_two: breedTwo,
+            breed_three: breedThree,
+            breed_four: breedFour,
+            breed_five: breedFive,
+            percent_one: percentOne,
+            percent_two: percentTwo,
+            percent_three: percentThree,
+            percent_four: percentFour,
+            percent_five: percentFive,
+            predicted_adult_weight: predictedWeight
+          })
+      }).then(resetForm()).then(console.log("submit successful"))
+        
+    } else {
+      console.log("submit failed")
+      alert("Submit failed, make sure you have the form completely filled out!")
+    }
+  }
 
   useEffect(() => {
     if (percentOne === "") {
@@ -385,7 +445,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="main-title">Nalarama!</h1>
+      <header>
+        <h1 className="main-title">Nalarama!</h1>
+      </header>
       {/* percentUsed should have to be 0 in order to submit form */}
       <div className="guess-form-container">
         <div className="name-email-container">
@@ -530,7 +592,7 @@ function App() {
           </div>
         </div>
         <h3 className="step-title">Step 3</h3>
-        <p>Enter your guess for Nala's predicted adult weight</p>
+        <p>Enter your guess for Nala's predicted adult weight, then you're ready to submit!</p>
         <div className="predicted-weight-container">
           <input
             onKeyPress={onlyThreeNumbers}
@@ -541,6 +603,7 @@ function App() {
             onChange={(e) => setPredictedWeight(e.target.value)}
             placeholder="lbs."
           />
+          <button className="submit-button" onClick={handleSubmit}>Submit</button>
         </div>
       </div>
     </div>

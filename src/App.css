@@ -9,6 +9,11 @@ html {
 
 }
 
+header {
+  display: flex;
+  justify-content: center;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -124,7 +129,7 @@ button:focus {
 
 .predicted-weight-container {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: space-around;
   align-items: center;
   width: 302px;
@@ -148,4 +153,13 @@ button:focus {
   border:  #6d3941 8px solid;
   height: 100px;
   margin-bottom: 20px;
+}
+
+.submit-button {
+  padding: 5px;
+}
+
+p {
+  width: 440px;
+  text-align: center;
 }
