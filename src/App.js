@@ -19,6 +19,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [predictedWeight, setPredictedWeight] = useState("1");
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false)
 
   // const [percentUsed, setPercentUsed] = useState(100);
 
@@ -403,7 +404,7 @@ function App() {
             percent_five: percentFive,
             predicted_adult_weight: predictedWeight
           })
-      }).then(resetForm()).then(console.log("submit successful"))
+      }).then(resetForm()).then(console.log("submit successful")).then(setIsFormSubmitted(true))
         
     } else {
       console.log("submit failed")
@@ -455,7 +456,7 @@ function App() {
         <img className="nala-face-img" alt="nala face" src={nalaFace}></img>
       </header>
       {/* percentUsed should have to be 0 in order to submit form */}
-      <div className="guess-form-container">
+      {!isFormSubmitted ? <div className="guess-form-container">
         <div className="name-email-container">
           <h3 className="step-title">Step 1</h3>
           <p>Enter your name and email</p>
@@ -613,7 +614,21 @@ function App() {
           />
           <button className="submit-button" onClick={handleSubmit}>Submit</button>
         </div>
-      </div>
+      </div> 
+      : <div className="successful-submission">
+        <h1>Thanks for participating!</h1>
+        <h2>Your Summary:</h2>
+        <h3>Name: {userName}</h3>
+        <h3>E-mail: {userEmail}</h3>
+        <h3>Breed 1: {breedOne} - {percentOne}</h3>
+        <h3>Breed 2: {breedTwo} - {percentTwo}</h3>
+        <h3>Breed 3: {breedThree} - {percentThree}</h3>
+        <h3>Breed 4: {breedFour} - {percentFour}</h3>
+        <h3>Breed 5: {breedFive} - {percentFive}</h3>
+
+        <p>Want to do another one? Sounds good!</p>
+        <button onClick={() => setIsFormSubmitted(false)}>Let's go again!</button>
+      </div>}
     </div>
   );
 }

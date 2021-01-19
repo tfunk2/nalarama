@@ -6,7 +6,9 @@ html {
 }
 
 .App {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header {
@@ -77,6 +79,7 @@ button:focus {
   height: auto;
   padding: 20px;
   margin-bottom: 50px;
+  border-radius: 8px;
 }
 
 .breed-choices-container {
@@ -160,21 +163,22 @@ button:focus {
 
 .submit-button {
   padding: 5px;
-  background-color: rgb(3, 252, 177);
+  background-color: #05a374;
+  color: antiquewhite;
   font-family: 'Chango', cursive;
   border: #05a374 3px solid;
   border-radius: 4px;
-  color: #052939;
 }
 
 .submit-button:hover {
   cursor: pointer;
-  background-color: #05a374;
+  background-color: #047050;
   color: antiquewhite;
 }
 
 .submit-button:active {
-  background-color: #047050;
+  background-color: rgb(3, 252, 177);
+  color: #052939;
 }
 
 p {
@@ -198,4 +202,8 @@ p {
   height: 20vw;
   min-height: 300px;
   margin-bottom: 20px;
+}
+
+.successful-submission {
+  background-color: #F2C14E;
 }
