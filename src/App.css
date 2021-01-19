@@ -11,7 +11,8 @@ html {
 
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 input:focus,
@@ -37,8 +38,8 @@ button:focus {
     3.5vw 3.5vw 0px #05a374, 
     4vw 4vw 0px #05a374, 
     4.5vw 4.5vw 0px #05a374;
-  margin-top: 20px;
-  margin-bottom: 80px;
+  margin-top: 0px;
+  margin-bottom: 5vw;
 }
 
 .predicted-weight-input,
@@ -75,6 +76,7 @@ button:focus {
   background-color: #F2C14E;
   height: auto;
   padding: 20px;
+  margin-bottom: 50px;
 }
 
 .breed-choices-container {
@@ -88,6 +90,7 @@ button:focus {
   height: 100%;
   padding: 20px;
   margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 .datalist-container {
@@ -157,9 +160,42 @@ button:focus {
 
 .submit-button {
   padding: 5px;
+  background-color: rgb(3, 252, 177);
+  font-family: 'Chango', cursive;
+  border: #05a374 3px solid;
+  border-radius: 4px;
+  color: #052939;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #05a374;
+  color: antiquewhite;
+}
+
+.submit-button:active {
+  background-color: #047050;
 }
 
 p {
   width: 440px;
   text-align: center;
+}
+
+.nala-face-img {
+  height: 12vw;
+  margin: 0px 3vw;
+}
+
+.nala-circle {
+  height: 12vw;
+  border: #05a374 30px solid;
+  border-radius: 300px;
+  margin-bottom: 20px;
+}
+
+.nala-cutout {
+  height: 20vw;
+  min-height: 300px;
+  margin-bottom: 20px;
 }

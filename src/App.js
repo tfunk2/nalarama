@@ -1,5 +1,9 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import nalaFace from './images/nala-face.png'
+import nalaFaceReverse from './images/nala-face-reverse.png'
+import nalaCircle from './images/nala-circle.png'
+import nalaCutout from './images/nala-cutout-1.png'
 
 function App() {
   const [breedOne, setBreedOne] = useState("");
@@ -348,19 +352,19 @@ function App() {
   };
 
   const resetForm = () => {
-    setUserName("")
-    setUserEmail("")
-    setBreedOne("")
-    setBreedTwo("")
-    setBreedThree("")
-    setBreedFour("")
-    setBreedFive("")
-    setPercentOne("0")
-    setPercentTwo("0")
-    setPercentThree("0")
-    setPercentFour("0")
-    setPercentFive("0")
-    setPredictedWeight("1")
+    // setUserName("")
+    // setUserEmail("")
+    // setBreedOne("")
+    // setBreedTwo("")
+    // setBreedThree("")
+    // setBreedFour("")
+    // setBreedFive("")
+    // setPercentOne("0")
+    // setPercentTwo("0")
+    // setPercentThree("0")
+    // setPercentFour("0")
+    // setPercentFive("0")
+    // setPredictedWeight("1")
   }
 
   const handleSubmit = (event) => {
@@ -446,7 +450,9 @@ function App() {
   return (
     <div className="App">
       <header>
+        <img className="nala-face-img" alt="nala face" src={nalaFaceReverse}></img>
         <h1 className="main-title">Nalarama!</h1>
+        <img className="nala-face-img" alt="nala face" src={nalaFace}></img>
       </header>
       {/* percentUsed should have to be 0 in order to submit form */}
       <div className="guess-form-container">
@@ -467,6 +473,7 @@ function App() {
               onChange={(e) => setUserEmail(e.target.value)}
             />
           </div>
+        <img className="nala-cutout" alt="nala cutout" src={nalaCutout}></img>
         </div>
         <div className="breed-choices-container">
           <h3 className="step-title">Step 2</h3>
@@ -591,6 +598,7 @@ function App() {
             />
           </div>
         </div>
+        <img className="nala-circle" alt="nala cutout" src={nalaCircle}></img>
         <h3 className="step-title">Step 3</h3>
         <p>Enter your guess for Nala's predicted adult weight, then you're ready to submit!</p>
         <div className="predicted-weight-container">
