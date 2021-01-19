@@ -20,8 +20,7 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
   const [predictedWeight, setPredictedWeight] = useState("1");
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
-
-  // const [percentUsed, setPercentUsed] = useState(100);
+  const [allGuessForms, setAllGuessForms] = useState([])
 
   const fullListOfBreeds = [
     "Affenpinscher",
@@ -368,6 +367,15 @@ function App() {
     // setPredictedWeight("1")
   }
 
+  const fetchSubmissions = () => {
+    fetch('http://localhost:3000/guess_form_submissions')
+      .then(response => response.json())
+      .then(guessForms => {
+        setAllGuessForms(guessForms)
+        console.log(guessForms)
+      })
+  }
+
   const handleSubmit = (event) => {
     if(breedOne.length > 0 &&
       breedTwo.length > 0 &&
@@ -448,6 +456,10 @@ function App() {
     }
   }, [predictedWeight]);
 
+  useEffect(() => {
+    fetchSubmissions()
+  }, []);
+
   return (
     <div className="App">
       <header>
@@ -455,6 +467,12 @@ function App() {
         <h1 className="main-title">Nalarama!</h1>
         <img className="nala-face-img" alt="nala face" src={nalaFace}></img>
       </header>
+      <div className="opening-paragraph">
+        <h5 className="opening-paragraph-l1">Want to prove your puppy breed picking prowess?</h5>
+        <h5 className="opening-paragraph-l2">Take a shot at guessing what mix our pup Nala is!</h5>
+        <h5 className="opening-paragraph-l3">All participants will have their entry scored, and will receive the final results via their valid e-mail address</h5>
+        <h3 className="forms-counter">Entries so far: <span className="forms-counter-number">{allGuessForms.length}</span></h3>
+      </div>
       {/* percentUsed should have to be 0 in order to submit form */}
       {!isFormSubmitted ? <div className="guess-form-container">
         <div className="name-email-container">
@@ -474,7 +492,8 @@ function App() {
               onChange={(e) => setUserEmail(e.target.value)}
             />
           </div>
-        <img className="nala-cutout" alt="nala cutout" src={nalaCutout}></img>
+          <p>We promise to never sell your information, and will only use your e-mail to send you the final results!</p>
+          <img className="nala-cutout" alt="nala cutout" src={nalaCutout}></img>
         </div>
         <div className="breed-choices-container">
           <h3 className="step-title">Step 2</h3>

@@ -41,7 +41,7 @@ button:focus {
     4vw 4vw 0px #05a374, 
     4.5vw 4.5vw 0px #05a374;
   margin-top: 0px;
-  margin-bottom: 5vw;
+  margin-bottom: 3vw;
 }
 
 .predicted-weight-input,
@@ -88,7 +88,7 @@ button:focus {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: auto;
+  width: 90%;
   background-color:  #F78154;
   padding: 5px 0px;
   height: 100%;
@@ -160,7 +160,7 @@ button:focus {
   border-radius: 8px;
   border:  #6d3941 8px solid;
   height: 100px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .submit-button {
@@ -197,7 +197,7 @@ p {
   height: 12vw;
   border: #05a374 30px solid;
   border-radius: 300px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .nala-cutout {
@@ -208,4 +208,49 @@ p {
 
 .successful-submission {
   background-color: #F2C14E;
+}
+
+.forms-counter-number {
+  font-family: 'Chango', cursive;
+  font-size: 20pt;
+  font-weight: 100;
+  margin: 0px;
+  background-color: #05a374;
+  color: white;
+  padding: 0px 8px 1px 8px;
+  border-radius: 4px;
+}
+
+.forms-counter {
+  /* font-family: 'Chango', cursive; */
+  font-size: 20pt;
+  font-weight: 400;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+  margin: 0px;
+  font-size: 12pt;
+}
+
+.opening-paragraph {
+  
+}
+
+.opening-paragraph-l1 {
+  font-size: 20pt;
+  font-weight: 900;
+}
+
+.opening-paragraph-l2 {
+  font-size: 18pt;
+  font-weight: 800;
+}
+
+.opening-paragraph-l3 {
+  font-size: 16pt;
+  font-weight: 700;
 }
