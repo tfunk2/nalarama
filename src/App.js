@@ -12,10 +12,11 @@ function App() {
   const [percentThree, setPercentThree] = useState("0");
   const [percentFour, setPercentFour] = useState("0");
   const [percentFive, setPercentFive] = useState("0");
-  const [userName, setUserName] = useState("0");
-  const [userEmail, setUserEmail] = useState("0");
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [predictedWeight, setPredictedWeight] = useState("1");
 
-  // const [percentRemaining, setPercentRemaining] = useState(100);
+  // const [percentUsed, setPercentUsed] = useState(100);
 
   const fullListOfBreeds = [
     "Affenpinscher",
@@ -317,56 +318,111 @@ function App() {
     return <option value={breed} />;
   });
 
-  const percentRemaining = () => {
-    return 100 - parseInt(percentOne) - parseInt(percentTwo) - parseInt(percentThree) - parseInt(percentFour) - parseInt(percentFive);
-  }
+  const percentUsed = () => {
+    return (
+      0 +
+      parseInt(percentOne) +
+      parseInt(percentTwo) +
+      parseInt(percentThree) +
+      parseInt(percentFour) +
+      parseInt(percentFive)
+    );
+  };
 
   const alphabetOnly = (e) => {
-    let alphabetRegex = /[a-zA-Z]| /
-    if(alphabetRegex.test(e.key)) {
-      console.log("alphabet letter")
+    let alphabetRegex = /[a-zA-Z ]|-/;
+    if (alphabetRegex.test(e.key)) {
+      console.log("alphabet letter");
     } else {
-        e.preventDefault()
+      e.preventDefault();
     }
-  }
+  };
+
+  const onlyThreeNumbers = (e) => {
+    let threeNumbersRegex = /[0-9]/;
+    if (threeNumbersRegex.test(e.key)) {
+      console.log("number only");
+    } else {
+      e.preventDefault();
+    }
+  };
 
   useEffect(() => {
-    if(percentOne === "") {
-      setPercentOne("0")
+    if (percentOne === "") {
+      setPercentOne("0");
     }
-  }, [percentOne])
+  }, [percentOne]);
 
   useEffect(() => {
-    if(percentTwo === "") {
-      setPercentTwo("0")
+    if (percentTwo === "") {
+      setPercentTwo("0");
     }
-  }, [percentTwo])
+  }, [percentTwo]);
 
   useEffect(() => {
-    if(percentThree === "") {
-      setPercentThree("0")
+    if (percentThree === "") {
+      setPercentThree("0");
     }
-  }, [percentThree])
+  }, [percentThree]);
 
   useEffect(() => {
-    if(percentFour === "") {
-      setPercentFour("0")
+    if (percentFour === "") {
+      setPercentFour("0");
     }
-  }, [percentFour])
+  }, [percentFour]);
 
   useEffect(() => {
-    if(percentFive === "") {
-      setPercentFive("0")
+    if (percentFive === "") {
+      setPercentFive("0");
     }
-  }, [percentFive])
+  }, [percentFive]);
+
+  useEffect(() => {
+    if (predictedWeight === "") {
+      setPredictedWeight("1");
+    }
+  }, [predictedWeight]);
 
   return (
     <div className="App">
       <h1 className="main-title">Nalarama!</h1>
-      {/* percentRemaining should have to be 0 in order to submit form */}
-      <h3 className="percent-remaining">{percentRemaining()}%</h3>
+      {/* percentUsed should have to be 0 in order to submit form */}
       <div className="guess-form-container">
+        <div className="name-email-container">
+          <h3 className="step-title">Step 1</h3>
+          <p>Enter your name and email</p>
+          <div className="step-one-inputs-div">
+            <input
+              className="name-input"
+              type="text"
+              placeholder="Name"
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <input
+              className="email-input"
+              type="text"
+              placeholder="E-mail"
+              onChange={(e) => setUserEmail(e.target.value)}
+            />
+          </div>
+        </div>
         <div className="breed-choices-container">
+          <h3 className="step-title">Step 2</h3>
+          <p>Select 5 dog breeds and guess a percentage for each breed</p>
+          <h3 className={percentUsed === 100 ? "hundred-percent" : "percent-remaining"}>{percentUsed()}% used</h3>
+          <p>
+            {percentUsed() === 100
+              ? "Perfect, ready to move on!"
+              : percentUsed() > 100
+              ? "Oops, too much, take some back!"
+              : percentUsed() > 75
+              ? "Almost done!"
+              : percentUsed() > 50
+              ? "Over halfway there!"
+              : percentUsed() > 25
+              ? "Keep going!"
+              : "Guess those breeds!"}
+          </p>
           <div className="datalist-container">
             <input
               onKeyPress={alphabetOnly}
@@ -375,10 +431,11 @@ function App() {
               id="breeds-input-one"
               name="breed-one"
               onChange={(e) => setBreedOne(e.target.value)}
-              placeholder="Breed Guess #1"
+              placeholder="Breed 1"
             />
             <datalist id="breed-one-list">{breedOptions}</datalist>
             <input
+              onKeyPress={onlyThreeNumbers}
               type="number"
               className="percentage-input"
               min={0}
@@ -395,14 +452,15 @@ function App() {
               id="breeds-input-two"
               name="breed-two"
               onChange={(e) => setBreedTwo(e.target.value)}
-              placeholder="Breed Guess #2"
+              placeholder="Breed 2"
             />
             <datalist id="breed-two-list">{breedOptions}</datalist>
             <input
+              onKeyPress={onlyThreeNumbers}
               type="number"
               className="percentage-input"
               min={0}
-              max={percentRemaining}
+              max={100}
               onChange={(e) => setPercentTwo(e.target.value)}
               placeholder="%"
             />
@@ -415,14 +473,15 @@ function App() {
               id="breeds-input-three"
               name="breed-three"
               onChange={(e) => setBreedThree(e.target.value)}
-              placeholder="Breed Guess #3"
+              placeholder="Breed 3"
             />
             <datalist id="breed-three-list">{breedOptions}</datalist>
             <input
+              onKeyPress={onlyThreeNumbers}
               type="number"
               className="percentage-input"
               min={0}
-              max={percentRemaining}
+              max={100}
               onChange={(e) => setPercentThree(e.target.value)}
               placeholder="%"
             />
@@ -435,14 +494,15 @@ function App() {
               id="breeds-input-four"
               name="breed-four"
               onChange={(e) => setBreedFour(e.target.value)}
-              placeholder="Breed Guess #4"
+              placeholder="Breed 4"
             />
             <datalist id="breed-four-list">{breedOptions}</datalist>
             <input
+              onKeyPress={onlyThreeNumbers}
               type="number"
               className="percentage-input"
               min={0}
-              max={percentRemaining}
+              max={100}
               onChange={(e) => setPercentFour(e.target.value)}
               placeholder="%"
             />
@@ -455,18 +515,32 @@ function App() {
               id="breeds-input-five"
               name="breed-five"
               onChange={(e) => setBreedFive(e.target.value)}
-              placeholder="Breed Guess #5"
+              placeholder="Breed 5"
             />
             <datalist id="breed-five-list">{breedOptions}</datalist>
             <input
+              onKeyPress={onlyThreeNumbers}
               type="number"
               className="percentage-input"
               min={0}
-              max={percentRemaining}
+              max={100}
               onChange={(e) => setPercentFive(e.target.value)}
               placeholder="%"
             />
           </div>
+        </div>
+        <h3 className="step-title">Step 3</h3>
+        <p>Enter your guess for Nala's predicted adult weight</p>
+        <div className="predicted-weight-container">
+          <input
+            onKeyPress={onlyThreeNumbers}
+            type="number"
+            className="predicted-weight-input"
+            min={1}
+            max={100}
+            onChange={(e) => setPredictedWeight(e.target.value)}
+            placeholder="lbs."
+          />
         </div>
       </div>
     </div>
