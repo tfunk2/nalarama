@@ -2,35 +2,39 @@
 
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 .main-title {
   text-align: center;
 }
 
 .percentage-input {
-  width: 30px;
-  text-align: center;
+  width: 40px;
+  /* text-align: center; */
+  padding: 5px;
 }
 
 .breed-input {
-  text-align: center;
+  /* text-align: center; */
   width: 90%;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  padding: 5px;
 }
 
 .breed-choices-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-around;
 }
 
 .datalist-container {
   height: 100px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-around;
   width: 20%;

@@ -12,6 +12,9 @@ function App() {
   const [percentThree, setPercentThree] = useState("0");
   const [percentFour, setPercentFour] = useState("0");
   const [percentFive, setPercentFive] = useState("0");
+  const [userName, setUserName] = useState("0");
+  const [userEmail, setUserEmail] = useState("0");
+
   // const [percentRemaining, setPercentRemaining] = useState(100);
 
   const fullListOfBreeds = [
@@ -314,111 +317,158 @@ function App() {
     return <option value={breed} />;
   });
 
-  const percentRemaining =
-    100 - percentOne - percentTwo - percentThree - percentFour - percentFive;
+  const percentRemaining = () => {
+    return 100 - parseInt(percentOne) - parseInt(percentTwo) - parseInt(percentThree) - parseInt(percentFour) - parseInt(percentFive);
+  }
+
+  const alphabetOnly = (e) => {
+    let alphabetRegex = /[a-zA-Z]| /
+    if(alphabetRegex.test(e.key)) {
+      console.log("alphabet letter")
+    } else {
+        e.preventDefault()
+    }
+  }
+
+  useEffect(() => {
+    if(percentOne === "") {
+      setPercentOne("0")
+    }
+  }, [percentOne])
+
+  useEffect(() => {
+    if(percentTwo === "") {
+      setPercentTwo("0")
+    }
+  }, [percentTwo])
+
+  useEffect(() => {
+    if(percentThree === "") {
+      setPercentThree("0")
+    }
+  }, [percentThree])
+
+  useEffect(() => {
+    if(percentFour === "") {
+      setPercentFour("0")
+    }
+  }, [percentFour])
+
+  useEffect(() => {
+    if(percentFive === "") {
+      setPercentFive("0")
+    }
+  }, [percentFive])
 
   return (
     <div className="App">
       <h1 className="main-title">Nalarama!</h1>
-      <h3 className="percent-remaining">{percentRemaining}%</h3>
-      <div className="breed-choices-container">
-        <div className="datalist-container">
-          <input
-            type="number"
-            className="percentage-input"
-            min={0}
-            max={percentRemaining}
-            onChange={(e) => setPercentOne(e.target.value)}
-            placeholder="%"
-          />
-          <input
-            className="breed-input"
-            list="breed-one-list"
-            id="breeds-input-one"
-            name="breed-one"
-            onChange={(e) => setBreedOne(e.target.value)}
-            placeholder="Breed Guess #1"
-          />
-          <datalist id="breed-one-list">{breedOptions}</datalist>
-        </div>
-        <div className="datalist-container">
-          <input
-            type="number"
-            className="percentage-input"
-            min={0}
-            max={percentRemaining}
-            onChange={(e) => setPercentTwo(e.target.value)}
-            placeholder="%"
-          />
-          <input
-            className="breed-input"
-            list="breed-two-list"
-            id="breeds-input-two"
-            name="breed-two"
-            onChange={(e) => setBreedTwo(e.target.value)}
-            placeholder="Breed Guess #2"
-          />
-          <datalist id="breed-two-list">{breedOptions}</datalist>
-        </div>
-        <div className="datalist-container">
-          <input
-            type="number"
-            className="percentage-input"
-            min={0}
-            max={percentRemaining}
-            onChange={(e) => setPercentThree(e.target.value)}
-            placeholder="%"
-          />
-          <input
-            className="breed-input"
-            list="breed-three-list"
-            id="breeds-input-three"
-            name="breed-three"
-            onChange={(e) => setBreedThree(e.target.value)}
-            placeholder="Breed Guess #3"
-          />
-          <datalist id="breed-three-list">{breedOptions}</datalist>
-        </div>
-        <div className="datalist-container">
-          <input
-            type="number"
-            className="percentage-input"
-            min={0}
-            max={percentRemaining}
-            onChange={(e) => setPercentFour(e.target.value)}
-            placeholder="%"
-          />
-          <input
-            className="breed-input"
-            list="breed-four-list"
-            id="breeds-input-four"
-            name="breed-four"
-            onChange={(e) => setBreedFour(e.target.value)}
-            placeholder="Breed Guess #4"
-          />
-          <datalist id="breed-four-list">{breedOptions}</datalist>
-        </div>
-        <div className="datalist-container">
-          <input
-            type="number"
-            className="percentage-input"
-            min={0}
-            max={percentRemaining}
-            onChange={(e) => setPercentFive(e.target.value)}
-            placeholder="%"
-          />
-          <input
-            className="breed-input"
-            list="breed-five-list"
-            id="breeds-input-five"
-            name="breed-five"
-            onChange={(e) => setBreedFive(e.target.value)}
-            placeholder="Breed Guess #5"
-          />
-          <datalist id="breed-five-list">{breedOptions}</datalist>
+      {/* percentRemaining should have to be 0 in order to submit form */}
+      <h3 className="percent-remaining">{percentRemaining()}%</h3>
+      <div className="guess-form-container">
+        <div className="breed-choices-container">
+          <div className="datalist-container">
+            <input
+              onKeyPress={alphabetOnly}
+              className="breed-input"
+              list="breed-one-list"
+              id="breeds-input-one"
+              name="breed-one"
+              onChange={(e) => setBreedOne(e.target.value)}
+              placeholder="Breed Guess #1"
+            />
+            <datalist id="breed-one-list">{breedOptions}</datalist>
+            <input
+              type="number"
+              className="percentage-input"
+              min={0}
+              max={100}
+              onChange={(e) => setPercentOne(e.target.value)}
+              placeholder="%"
+            />
+          </div>
+          <div className="datalist-container">
+            <input
+              onKeyPress={alphabetOnly}
+              className="breed-input"
+              list="breed-two-list"
+              id="breeds-input-two"
+              name="breed-two"
+              onChange={(e) => setBreedTwo(e.target.value)}
+              placeholder="Breed Guess #2"
+            />
+            <datalist id="breed-two-list">{breedOptions}</datalist>
+            <input
+              type="number"
+              className="percentage-input"
+              min={0}
+              max={percentRemaining}
+              onChange={(e) => setPercentTwo(e.target.value)}
+              placeholder="%"
+            />
+          </div>
+          <div className="datalist-container">
+            <input
+              onKeyPress={alphabetOnly}
+              className="breed-input"
+              list="breed-three-list"
+              id="breeds-input-three"
+              name="breed-three"
+              onChange={(e) => setBreedThree(e.target.value)}
+              placeholder="Breed Guess #3"
+            />
+            <datalist id="breed-three-list">{breedOptions}</datalist>
+            <input
+              type="number"
+              className="percentage-input"
+              min={0}
+              max={percentRemaining}
+              onChange={(e) => setPercentThree(e.target.value)}
+              placeholder="%"
+            />
+          </div>
+          <div className="datalist-container">
+            <input
+              onKeyPress={alphabetOnly}
+              className="breed-input"
+              list="breed-four-list"
+              id="breeds-input-four"
+              name="breed-four"
+              onChange={(e) => setBreedFour(e.target.value)}
+              placeholder="Breed Guess #4"
+            />
+            <datalist id="breed-four-list">{breedOptions}</datalist>
+            <input
+              type="number"
+              className="percentage-input"
+              min={0}
+              max={percentRemaining}
+              onChange={(e) => setPercentFour(e.target.value)}
+              placeholder="%"
+            />
+          </div>
+          <div className="datalist-container">
+            <input
+              onKeyPress={alphabetOnly}
+              className="breed-input"
+              list="breed-five-list"
+              id="breeds-input-five"
+              name="breed-five"
+              onChange={(e) => setBreedFive(e.target.value)}
+              placeholder="Breed Guess #5"
+            />
+            <datalist id="breed-five-list">{breedOptions}</datalist>
+            <input
+              type="number"
+              className="percentage-input"
+              min={0}
+              max={percentRemaining}
+              onChange={(e) => setPercentFive(e.target.value)}
+              placeholder="%"
+            />
+          </div>
         </div>
       </div>
-      {/* percentRemaining should have to be 0 in order to submit form */}
     </div>
   );
 }
