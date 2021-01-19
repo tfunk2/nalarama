@@ -479,7 +479,7 @@ function App() {
         <div className="breed-choices-container">
           <h3 className="step-title">Step 2</h3>
           <p>Select 5 dog breeds and guess a percentage for each breed</p>
-          <h3 className={percentUsed === 100 ? "hundred-percent" : "percent-remaining"}>{percentUsed()}% used</h3>
+          <h3 className={percentUsed() === 100 ? "hundred-percent" : "percent-remaining"}>{percentUsed()}%</h3>
           <p>
             {percentUsed() === 100
               ? "Perfect, ready to move on!"

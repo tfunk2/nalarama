@@ -80,6 +80,7 @@ button:focus {
   padding: 20px;
   margin-bottom: 50px;
   border-radius: 8px;
+  width: 60%;
 }
 
 .breed-choices-container {
@@ -109,6 +110,7 @@ button:focus {
   margin-bottom: 10px;
 }
 
+.hundred-percent, 
 .percent-remaining {
   text-align: center;
   margin-bottom: 0px;
@@ -117,13 +119,13 @@ button:focus {
 }
 
 .hundred-percent {
-
+  color: rgb(3, 252, 177);
 }
 
 .step-title {
   margin: 0px;
   font-family: 'Chango', cursive;
-  font-size: 20pt;
+  font-size: 30pt;
 }
 
 .name-email-container {
