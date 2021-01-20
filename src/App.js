@@ -533,7 +533,7 @@ function App() {
           </div>
           <div className="breed-choices-container">
             <h3 className="step-title">Step 2</h3>
-            <p>Select 5 dog breeds and guess a percentage for each breed</p>
+            <p>Select 5 dog breeds and guess a percentage for each breed.</p>
             <p>Ideally your total percentage will add up to exactly 100!</p>
             <h3
               className={
@@ -553,7 +553,7 @@ function App() {
                 ? "Over halfway there!"
                 : percentUsed() > 25
                 ? "Keep going!"
-                : "Guess those breeds!"}
+                : "Start guessing!"}
             </p>
             <div className="datalist-container">
               <input
@@ -660,6 +660,7 @@ function App() {
                 placeholder="%"
               />
             </div>
+            <h5 className="embark-link-sentence">Need some inspiration or information about the different breeds? Check out the <a href="https://embarkvet.com/resources/dog-breeds/">350+ dog breeds</a> Embark tests for.</h5>
           </div>
           <img className="nala-circle" alt="nala cutout" src={nalaCircle}></img>
           <h3 className="step-title">Step 3</h3>

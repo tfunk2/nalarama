@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
 
 html {
-  background-color: rgb(3, 252, 177);
+  background-color: #03fcb1;
   color: #052939;
 }
 
@@ -116,10 +116,11 @@ button:focus {
   margin-bottom: 0px;
   font-family: 'Chango', cursive;
   font-size: 20pt;
+  margin-top: 10px;
 }
 
 .hundred-percent {
-  color: rgb(3, 252, 177);
+  color: #03fcb1;
 }
 
 .step-title {
@@ -179,7 +180,7 @@ button:focus {
 }
 
 .submit-button:active {
-  background-color: rgb(3, 252, 177);
+  background-color: #03fcb1;
   color: #052939;
 }
 
@@ -250,7 +251,10 @@ h5 {
 }
 
 .opening-paragraph {
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .opening-paragraph-l1 {
@@ -266,4 +270,11 @@ h5 {
 .opening-paragraph-l3 {
   font-size: 16pt;
   font-weight: 700;
+  width: 55%;
+  text-align: center;
+
+}
+
+.embark-link-sentence {
+  width: 50%;
 }
