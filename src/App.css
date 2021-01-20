@@ -186,11 +186,21 @@ button:focus {
 p {
   width: 440px;
   text-align: center;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
-.nala-face-img {
+.nala-face-img-left,
+.nala-face-img-right {
   height: 12vw;
-  margin: 0px 3vw;
+}
+
+.nala-face-img-left {
+  margin: 0px 3vw 0px 0px;
+}
+
+.nala-face-img-right {
+  margin: 0px 0px 0px 2.6vw;
 }
 
 .nala-circle {
@@ -204,10 +214,13 @@ p {
   height: 20vw;
   min-height: 300px;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .successful-submission {
   background-color: #F2C14E;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .forms-counter-number {

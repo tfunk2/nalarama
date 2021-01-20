@@ -1,9 +1,9 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import nalaFace from './images/nala-face.png'
-import nalaFaceReverse from './images/nala-face-reverse.png'
-import nalaCircle from './images/nala-circle.png'
-import nalaCutout from './images/nala-cutout-1.png'
+import nalaFace from "./images/nala-face.png";
+import nalaFaceReverse from "./images/nala-face-reverse.png";
+import nalaCircle from "./images/nala-circle.png";
+import nalaCutout from "./images/nala-cutout-1.png";
 
 function App() {
   const [breedOne, setBreedOne] = useState("");
@@ -19,8 +19,8 @@ function App() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [predictedWeight, setPredictedWeight] = useState("1");
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false)
-  const [allGuessForms, setAllGuessForms] = useState([])
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [allGuessForms, setAllGuessForms] = useState([]);
 
   const fullListOfBreeds = [
     "Affenpinscher",
@@ -365,19 +365,20 @@ function App() {
     // setPercentFour("0")
     // setPercentFive("0")
     // setPredictedWeight("1")
-  }
+  };
 
   const fetchSubmissions = () => {
-    fetch('http://localhost:3000/guess_form_submissions')
-      .then(response => response.json())
-      .then(guessForms => {
-        setAllGuessForms(guessForms)
-        console.log(guessForms)
-      })
-  }
+    fetch("http://localhost:3000/guess_form_submissions")
+      .then((response) => response.json())
+      .then((guessForms) => {
+        setAllGuessForms(guessForms);
+        console.log(guessForms);
+      });
+  };
 
   const handleSubmit = (event) => {
-    if(breedOne.length > 0 &&
+    if (
+      breedOne.length > 0 &&
       breedTwo.length > 0 &&
       breedThree.length > 0 &&
       breedFour.length > 0 &&
@@ -389,36 +390,41 @@ function App() {
       parseInt(percentFive) > 0 &&
       userName.length > 0 &&
       userEmail.length > 0 &&
-      parseInt(predictedWeight) > 0) {
-        event.preventDefault()
-        fetch('http://localhost:3000/guess_form_submissions', {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-          },
-          body: JSON.stringify({ 
-            name: userName,
-            email: userEmail,
-            breed_one: breedOne,
-            breed_two: breedTwo,
-            breed_three: breedThree,
-            breed_four: breedFour,
-            breed_five: breedFive,
-            percent_one: percentOne,
-            percent_two: percentTwo,
-            percent_three: percentThree,
-            percent_four: percentFour,
-            percent_five: percentFive,
-            predicted_adult_weight: predictedWeight
-          })
-      }).then(resetForm()).then(console.log("submit successful")).then(setIsFormSubmitted(true))
-        
+      parseInt(predictedWeight) > 0
+    ) {
+      event.preventDefault();
+      fetch("http://localhost:3000/guess_form_submissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: userName,
+          email: userEmail,
+          breed_one: breedOne,
+          breed_two: breedTwo,
+          breed_three: breedThree,
+          breed_four: breedFour,
+          breed_five: breedFive,
+          percent_one: percentOne,
+          percent_two: percentTwo,
+          percent_three: percentThree,
+          percent_four: percentFour,
+          percent_five: percentFive,
+          predicted_adult_weight: predictedWeight,
+        }),
+      })
+        .then(resetForm())
+        .then(console.log("submit successful"))
+        .then(setIsFormSubmitted(true));
     } else {
-      console.log("submit failed")
-      alert("Submit failed, make sure you have the form completely filled out!")
+      console.log("submit failed");
+      alert(
+        "Submit failed, make sure you have the form completely filled out, and all numbers are greater than 0, then try again!"
+      );
     }
-  }
+  };
 
   useEffect(() => {
     if (percentOne === "") {
@@ -457,197 +463,261 @@ function App() {
   }, [predictedWeight]);
 
   useEffect(() => {
-    fetchSubmissions()
+    fetchSubmissions();
+  }, [isFormSubmitted]);
+
+  useEffect(() => {
+    fetchSubmissions();
   }, []);
 
   return (
     <div className="App">
       <header>
-        <img className="nala-face-img" alt="nala face" src={nalaFaceReverse}></img>
+        <img
+          className="nala-face-img-left"
+          alt="nala face"
+          src={nalaFaceReverse}
+        ></img>
         <h1 className="main-title">Nalarama!</h1>
-        <img className="nala-face-img" alt="nala face" src={nalaFace}></img>
+        <img
+          className="nala-face-img-right"
+          alt="nala face"
+          src={nalaFace}
+        ></img>
       </header>
       <div className="opening-paragraph">
-        <h5 className="opening-paragraph-l1">Want to prove your puppy breed picking prowess?</h5>
-        <h5 className="opening-paragraph-l2">Take a shot at guessing what mix our pup Nala is!</h5>
-        <h5 className="opening-paragraph-l3">All participants will have their entry scored, and will receive the final results via their valid e-mail address</h5>
-        <h3 className="forms-counter">Entries so far: <span className="forms-counter-number">{allGuessForms.length}</span></h3>
+        <h5 className="opening-paragraph-l1">
+          Want to prove your puppy breed picking prowess?
+        </h5>
+        <h5 className="opening-paragraph-l2">
+          Take a shot at guessing what mix our pup Nala is!
+        </h5>
+        <h5 className="opening-paragraph-l3">
+          All participants will have their entry scored, and will receive the
+          final results via their valid e-mail address
+        </h5>
+        <h3 className="forms-counter">
+          Entries so far:{" "}
+          <span className="forms-counter-number">{allGuessForms.length}</span>
+        </h3>
       </div>
       {/* percentUsed should have to be 0 in order to submit form */}
-      {!isFormSubmitted ? <div className="guess-form-container">
-        <div className="name-email-container">
-          <h3 className="step-title">Step 1</h3>
-          <p>Enter your name and email</p>
-          <div className="step-one-inputs-div">
-            <input
-              className="name-input"
-              type="text"
-              placeholder="Name"
-              onChange={(e) => setUserName(e.target.value)}
-            />
-            <input
-              className="email-input"
-              type="text"
-              placeholder="E-mail"
-              onChange={(e) => setUserEmail(e.target.value)}
-            />
+      {!isFormSubmitted ? (
+        <div className="guess-form-container">
+          <div className="name-email-container">
+            <h3 className="step-title">Step 1</h3>
+            <p>Enter your name and e-mail</p>
+            <div className="step-one-inputs-div">
+              <input
+                className="name-input"
+                type="text"
+                placeholder="Name"
+                onChange={(e) => setUserName(e.target.value)}
+              />
+              <input
+                className="email-input"
+                type="text"
+                placeholder="E-mail"
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
+            </div>
+            <p>
+              We promise to never sell your information, and will only use your
+              e-mail to send you the final results!
+            </p>
+            <img
+              className="nala-cutout"
+              alt="nala cutout"
+              src={nalaCutout}
+            ></img>
           </div>
-          <p>We promise to never sell your information, and will only use your e-mail to send you the final results!</p>
-          <img className="nala-cutout" alt="nala cutout" src={nalaCutout}></img>
-        </div>
-        <div className="breed-choices-container">
-          <h3 className="step-title">Step 2</h3>
-          <p>Select 5 dog breeds and guess a percentage for each breed</p>
-          <h3 className={percentUsed() === 100 ? "hundred-percent" : "percent-remaining"}>{percentUsed()}%</h3>
+          <div className="breed-choices-container">
+            <h3 className="step-title">Step 2</h3>
+            <p>Select 5 dog breeds and guess a percentage for each breed</p>
+            <p>Ideally your total percentage will add up to exactly 100!</p>
+            <h3
+              className={
+                percentUsed() === 100 ? "hundred-percent" : "percent-remaining"
+              }
+            >
+              {percentUsed()}%
+            </h3>
+            <p>
+              {percentUsed() === 100
+                ? "Perfect, ready to move on!"
+                : percentUsed() > 100
+                ? "Oops, too much, take some back!"
+                : percentUsed() > 75
+                ? "Almost done!"
+                : percentUsed() > 50
+                ? "Over halfway there!"
+                : percentUsed() > 25
+                ? "Keep going!"
+                : "Guess those breeds!"}
+            </p>
+            <div className="datalist-container">
+              <input
+                onKeyPress={alphabetOnly}
+                className="breed-input"
+                list="breed-one-list"
+                id="breeds-input-one"
+                name="breed-one"
+                onChange={(e) => setBreedOne(e.target.value)}
+                placeholder="Breed 1"
+              />
+              <datalist id="breed-one-list">{breedOptions}</datalist>
+              <input
+                onKeyPress={onlyThreeNumbers}
+                type="number"
+                className="percentage-input"
+                min={0}
+                max={100}
+                onChange={(e) => setPercentOne(e.target.value)}
+                placeholder="%"
+              />
+            </div>
+            <div className="datalist-container">
+              <input
+                onKeyPress={alphabetOnly}
+                className="breed-input"
+                list="breed-two-list"
+                id="breeds-input-two"
+                name="breed-two"
+                onChange={(e) => setBreedTwo(e.target.value)}
+                placeholder="Breed 2"
+              />
+              <datalist id="breed-two-list">{breedOptions}</datalist>
+              <input
+                onKeyPress={onlyThreeNumbers}
+                type="number"
+                className="percentage-input"
+                min={0}
+                max={100}
+                onChange={(e) => setPercentTwo(e.target.value)}
+                placeholder="%"
+              />
+            </div>
+            <div className="datalist-container">
+              <input
+                onKeyPress={alphabetOnly}
+                className="breed-input"
+                list="breed-three-list"
+                id="breeds-input-three"
+                name="breed-three"
+                onChange={(e) => setBreedThree(e.target.value)}
+                placeholder="Breed 3"
+              />
+              <datalist id="breed-three-list">{breedOptions}</datalist>
+              <input
+                onKeyPress={onlyThreeNumbers}
+                type="number"
+                className="percentage-input"
+                min={0}
+                max={100}
+                onChange={(e) => setPercentThree(e.target.value)}
+                placeholder="%"
+              />
+            </div>
+            <div className="datalist-container">
+              <input
+                onKeyPress={alphabetOnly}
+                className="breed-input"
+                list="breed-four-list"
+                id="breeds-input-four"
+                name="breed-four"
+                onChange={(e) => setBreedFour(e.target.value)}
+                placeholder="Breed 4"
+              />
+              <datalist id="breed-four-list">{breedOptions}</datalist>
+              <input
+                onKeyPress={onlyThreeNumbers}
+                type="number"
+                className="percentage-input"
+                min={0}
+                max={100}
+                onChange={(e) => setPercentFour(e.target.value)}
+                placeholder="%"
+              />
+            </div>
+            <div className="datalist-container">
+              <input
+                onKeyPress={alphabetOnly}
+                className="breed-input"
+                list="breed-five-list"
+                id="breeds-input-five"
+                name="breed-five"
+                onChange={(e) => setBreedFive(e.target.value)}
+                placeholder="Breed 5"
+              />
+              <datalist id="breed-five-list">{breedOptions}</datalist>
+              <input
+                onKeyPress={onlyThreeNumbers}
+                type="number"
+                className="percentage-input"
+                min={0}
+                max={100}
+                onChange={(e) => setPercentFive(e.target.value)}
+                placeholder="%"
+              />
+            </div>
+          </div>
+          <img className="nala-circle" alt="nala cutout" src={nalaCircle}></img>
+          <h3 className="step-title">Step 3</h3>
           <p>
-            {percentUsed() === 100
-              ? "Perfect, ready to move on!"
-              : percentUsed() > 100
-              ? "Oops, too much, take some back!"
-              : percentUsed() > 75
-              ? "Almost done!"
-              : percentUsed() > 50
-              ? "Over halfway there!"
-              : percentUsed() > 25
-              ? "Keep going!"
-              : "Guess those breeds!"}
+            Enter your guess for Nala's predicted adult weight, then you're
+            ready to submit!
           </p>
-          <div className="datalist-container">
-            <input
-              onKeyPress={alphabetOnly}
-              className="breed-input"
-              list="breed-one-list"
-              id="breeds-input-one"
-              name="breed-one"
-              onChange={(e) => setBreedOne(e.target.value)}
-              placeholder="Breed 1"
-            />
-            <datalist id="breed-one-list">{breedOptions}</datalist>
+          <div className="predicted-weight-container">
             <input
               onKeyPress={onlyThreeNumbers}
               type="number"
-              className="percentage-input"
-              min={0}
+              className="predicted-weight-input"
+              min={1}
               max={100}
-              onChange={(e) => setPercentOne(e.target.value)}
-              placeholder="%"
+              onChange={(e) => setPredictedWeight(e.target.value)}
+              placeholder="lbs."
             />
+            <button className="submit-button" onClick={handleSubmit}>
+              Submit
+            </button>
           </div>
-          <div className="datalist-container">
-            <input
-              onKeyPress={alphabetOnly}
-              className="breed-input"
-              list="breed-two-list"
-              id="breeds-input-two"
-              name="breed-two"
-              onChange={(e) => setBreedTwo(e.target.value)}
-              placeholder="Breed 2"
-            />
-            <datalist id="breed-two-list">{breedOptions}</datalist>
-            <input
-              onKeyPress={onlyThreeNumbers}
-              type="number"
-              className="percentage-input"
-              min={0}
-              max={100}
-              onChange={(e) => setPercentTwo(e.target.value)}
-              placeholder="%"
-            />
-          </div>
-          <div className="datalist-container">
-            <input
-              onKeyPress={alphabetOnly}
-              className="breed-input"
-              list="breed-three-list"
-              id="breeds-input-three"
-              name="breed-three"
-              onChange={(e) => setBreedThree(e.target.value)}
-              placeholder="Breed 3"
-            />
-            <datalist id="breed-three-list">{breedOptions}</datalist>
-            <input
-              onKeyPress={onlyThreeNumbers}
-              type="number"
-              className="percentage-input"
-              min={0}
-              max={100}
-              onChange={(e) => setPercentThree(e.target.value)}
-              placeholder="%"
-            />
-          </div>
-          <div className="datalist-container">
-            <input
-              onKeyPress={alphabetOnly}
-              className="breed-input"
-              list="breed-four-list"
-              id="breeds-input-four"
-              name="breed-four"
-              onChange={(e) => setBreedFour(e.target.value)}
-              placeholder="Breed 4"
-            />
-            <datalist id="breed-four-list">{breedOptions}</datalist>
-            <input
-              onKeyPress={onlyThreeNumbers}
-              type="number"
-              className="percentage-input"
-              min={0}
-              max={100}
-              onChange={(e) => setPercentFour(e.target.value)}
-              placeholder="%"
-            />
-          </div>
-          <div className="datalist-container">
-            <input
-              onKeyPress={alphabetOnly}
-              className="breed-input"
-              list="breed-five-list"
-              id="breeds-input-five"
-              name="breed-five"
-              onChange={(e) => setBreedFive(e.target.value)}
-              placeholder="Breed 5"
-            />
-            <datalist id="breed-five-list">{breedOptions}</datalist>
-            <input
-              onKeyPress={onlyThreeNumbers}
-              type="number"
-              className="percentage-input"
-              min={0}
-              max={100}
-              onChange={(e) => setPercentFive(e.target.value)}
-              placeholder="%"
-            />
+          <div className="scoring-guide-div">
+            <h3>
+              Want to learn about the scoring system? Check out the{" "}
+              <a href="https://docs.google.com/document/d/1ZV9TeVTspGCi58wLo323N_OezzcLBhZD3LAljw_0gCs/edit?usp=sharing">
+                Scoring Guide
+              </a>
+            </h3>
           </div>
         </div>
-        <img className="nala-circle" alt="nala cutout" src={nalaCircle}></img>
-        <h3 className="step-title">Step 3</h3>
-        <p>Enter your guess for Nala's predicted adult weight, then you're ready to submit!</p>
-        <div className="predicted-weight-container">
-          <input
-            onKeyPress={onlyThreeNumbers}
-            type="number"
-            className="predicted-weight-input"
-            min={1}
-            max={100}
-            onChange={(e) => setPredictedWeight(e.target.value)}
-            placeholder="lbs."
-          />
-          <button className="submit-button" onClick={handleSubmit}>Submit</button>
-        </div>
-      </div> 
-      : <div className="successful-submission">
-        <h1>Thanks for participating!</h1>
-        <h2>Your Summary:</h2>
-        <h3>Name: {userName}</h3>
-        <h3>E-mail: {userEmail}</h3>
-        <h3>Breed 1: {breedOne} - {percentOne}</h3>
-        <h3>Breed 2: {breedTwo} - {percentTwo}</h3>
-        <h3>Breed 3: {breedThree} - {percentThree}</h3>
-        <h3>Breed 4: {breedFour} - {percentFour}</h3>
-        <h3>Breed 5: {breedFive} - {percentFive}</h3>
+      ) : (
+        <div className="successful-submission">
+          <h1>Thanks for participating!</h1>
+          <h2>Your Summary</h2>
+          <h3>Name: {userName}</h3>
+          <h3>E-mail: {userEmail}</h3>
+          <h3>
+            Breed 1: {breedOne} - {percentOne}
+          </h3>
+          <h3>
+            Breed 2: {breedTwo} - {percentTwo}
+          </h3>
+          <h3>
+            Breed 3: {breedThree} - {percentThree}
+          </h3>
+          <h3>
+            Breed 4: {breedFour} - {percentFour}
+          </h3>
+          <h3>
+            Breed 5: {breedFive} - {percentFive}
+          </h3>
 
-        <p>Want to do another one? Sounds good!</p>
-        <button onClick={() => setIsFormSubmitted(false)}>Let's go again!</button>
-      </div>}
+          <p>Want to do another one? Sounds good!</p>
+          <button onClick={() => setIsFormSubmitted(false)}>
+            Let's go again!
+          </button>
+        </div>
+      )}
     </div>
   );
 }
