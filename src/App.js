@@ -352,19 +352,19 @@ function App() {
   };
 
   const resetForm = () => {
-    // setUserName("")
-    // setUserEmail("")
-    // setBreedOne("")
-    // setBreedTwo("")
-    // setBreedThree("")
-    // setBreedFour("")
-    // setBreedFive("")
-    // setPercentOne("0")
-    // setPercentTwo("0")
-    // setPercentThree("0")
-    // setPercentFour("0")
-    // setPercentFive("0")
-    // setPredictedWeight("1")
+    setUserName("")
+    setUserEmail("")
+    setBreedOne("")
+    setBreedTwo("")
+    setBreedThree("")
+    setBreedFour("")
+    setBreedFive("")
+    setPercentOne("0")
+    setPercentTwo("0")
+    setPercentThree("0")
+    setPercentFour("0")
+    setPercentFive("0")
+    setPredictedWeight("1")
   };
 
   const fetchSubmissions = () => {
@@ -415,16 +415,20 @@ function App() {
           predicted_adult_weight: predictedWeight,
         }),
       })
-        .then(resetForm())
         .then(console.log("submit successful"))
         .then(setIsFormSubmitted(true));
     } else {
       console.log("submit failed");
       alert(
-        "Submit failed, make sure you have the form completely filled out, and all numbers are greater than 0, then try again!"
+        "Submit failed, make sure you have the form completely filled out, then try again!"
       );
     }
   };
+
+  const goAgain = () => {
+    setIsFormSubmitted(false)
+    resetForm()
+  }
 
   useEffect(() => {
     if (percentOne === "") {
@@ -542,7 +546,7 @@ function App() {
             >
               {percentUsed()}%
             </h3>
-            <p>
+            <h3>
               {percentUsed() === 100
                 ? "Perfect, ready to move on!"
                 : percentUsed() > 100
@@ -554,7 +558,7 @@ function App() {
                 : percentUsed() > 25
                 ? "Keep going!"
                 : "Start guessing!"}
-            </p>
+            </h3>
             <div className="datalist-container">
               <input
                 onKeyPress={alphabetOnly}
@@ -570,7 +574,7 @@ function App() {
                 onKeyPress={onlyThreeNumbers}
                 type="number"
                 className="percentage-input"
-                min={0}
+                min={1}
                 max={100}
                 onChange={(e) => setPercentOne(e.target.value)}
                 placeholder="%"
@@ -591,7 +595,7 @@ function App() {
                 onKeyPress={onlyThreeNumbers}
                 type="number"
                 className="percentage-input"
-                min={0}
+                min={1}
                 max={100}
                 onChange={(e) => setPercentTwo(e.target.value)}
                 placeholder="%"
@@ -612,7 +616,7 @@ function App() {
                 onKeyPress={onlyThreeNumbers}
                 type="number"
                 className="percentage-input"
-                min={0}
+                min={1}
                 max={100}
                 onChange={(e) => setPercentThree(e.target.value)}
                 placeholder="%"
@@ -633,7 +637,7 @@ function App() {
                 onKeyPress={onlyThreeNumbers}
                 type="number"
                 className="percentage-input"
-                min={0}
+                min={1}
                 max={100}
                 onChange={(e) => setPercentFour(e.target.value)}
                 placeholder="%"
@@ -654,7 +658,7 @@ function App() {
                 onKeyPress={onlyThreeNumbers}
                 type="number"
                 className="percentage-input"
-                min={0}
+                min={1}
                 max={100}
                 onChange={(e) => setPercentFive(e.target.value)}
                 placeholder="%"
@@ -693,29 +697,50 @@ function App() {
         </div>
       ) : (
         <div className="successful-submission">
-          <h1>Thanks for participating!</h1>
-          <h2>Your Summary</h2>
-          <h3>Name: {userName}</h3>
-          <h3>E-mail: {userEmail}</h3>
-          <h3>
-            Breed 1: {breedOne} - {percentOne}
-          </h3>
-          <h3>
-            Breed 2: {breedTwo} - {percentTwo}
-          </h3>
-          <h3>
-            Breed 3: {breedThree} - {percentThree}
-          </h3>
-          <h3>
-            Breed 4: {breedFour} - {percentFour}
-          </h3>
-          <h3>
-            Breed 5: {breedFive} - {percentFive}
-          </h3>
+          <h1 className="thank-you-h1">Thanks for participating {userName}!</h1>
+          <table>
+            <tr>
+              <th className="table-summary-title">Summary</th>
+              <th>Breeds</th>
+              <th>Percentages</th>
+            </tr>
+            <tr>
+              <td>Guess 1</td>
+              <td>{breedOne}</td>
+              <td>{percentOne}%</td>
+            </tr>
+            <tr>
+              <td>Guess 2</td>
+              <td>{breedTwo}</td>
+              <td>{percentTwo}%</td>
+            </tr>
+            <tr>
+              <td>Guess 3</td>
+              <td>{breedThree}</td>
+              <td>{percentThree}%</td>
+            </tr>
+            <tr>
+              <td>Guess 4</td>
+              <td>{breedFour}</td>
+              <td>{percentFour}%</td>
+            </tr>
+            <tr>
+              <td>Guess 5</td>
+              <td>{breedFive}</td>
+              <td>{percentFive}%</td>
+            </tr>
+          </table>
+          <table className="adult-weight-table">
+            <tr>
+              <td>Adult Weight Guess</td>
+              <td>{predictedWeight} {predictedWeight === 1 ? "lb" : "lbs."}</td>
+            </tr>
+          </table>
 
-          <p>Want to do another one? Sounds good!</p>
-          <button onClick={() => setIsFormSubmitted(false)}>
-            Let's go again!
+          <h3 className="closing-sentence">We will send you an e-mail at <span className="email-span">{userEmail}</span> when Nala's Embark results come in, and the top 3 scores will be recognized!</h3>
+          <h4 className="closing-sentence">Want to do another one? Sounds good! Submit as many entries as your heart desires!</h4>
+          <button className="go-again-button" onClick={() => goAgain()}>
+            Go again!
           </button>
         </div>
       )}
