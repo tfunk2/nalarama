@@ -136,6 +136,11 @@ button:focus {
   align-items: center;
 }
 
+.name-email-container > p {
+  width: 60%;
+  margin: 10px;
+}
+
 .predicted-weight-container {
   display: flex;
   /* flex-direction: column; */
@@ -174,6 +179,7 @@ button:focus {
   border-radius: 4px;
   width: 160px;
   align-self: center;
+  font-size: 14pt;
 }
 
 .go-again-button:hover,
@@ -245,7 +251,6 @@ p {
 }
 
 .forms-counter {
-  /* font-family: 'Chango', cursive; */
   font-size: 20pt;
   font-weight: 400;
   margin-bottom: 5px;
@@ -269,11 +274,13 @@ h5 {
 .opening-paragraph-l1 {
   font-size: 20pt;
   font-weight: 900;
+  margin-top: 0px;
 }
 
 .opening-paragraph-l2 {
   font-size: 18pt;
   font-weight: 800;
+  margin-top: 10px;
 }
 
 .opening-paragraph-l3 {
@@ -281,11 +288,12 @@ h5 {
   font-weight: 700;
   width: 55%;
   text-align: center;
-
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .embark-link-sentence {
-  width: 50%;
+  width: 60%;
 }
 
 th {
@@ -333,4 +341,333 @@ table {
 
 .thank-you-h1 {
   margin-top: 0px;
+}
+
+.scoring-guide-div {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.scoring-guide-div > h3 {
+  width: 60%;
+  margin-top: 0px;
+}
+
+.step-three-p {
+  width: 340px;
+  margin-bottom: 16px;
+}
+
+.cs-two {
+  margin-top: 0px;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 767px) {
+  td, th {
+    padding: 4px;
+  }
+
+  th {
+    font-size: 10pt;
+    padding-bottom: 10px;
+  }
+
+  .table-summary-title {
+    font-size: 10pt;
+    font-weight: 900;
+    padding-bottom: 10px;
+  }
+
+  .successful-submission {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .closing-sentence {
+    text-align: center;
+    width: 90%;
+    align-self: center;
+    margin-top: 20px;
+  }
+
+  .opening-paragraph-l1 {
+    font-size: 16pt;
+    font-weight: 800;
+    width: 98%;
+    margin-top: 8px;
+  }
+  
+  .opening-paragraph-l2 {
+    font-size: 14pt;
+    font-weight: 700;
+    width: 90%;
+    margin-top: 8px;
+  }
+  
+  .opening-paragraph-l3 {
+    font-size: 12pt;
+    font-weight: 600;
+    width: 80%;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .thank-you-h1 {
+    font-size: 18pt;
+    text-align: center;
+  }
+
+  .forms-counter-number {
+    font-size: 14pt;
+    font-weight: 100;
+    margin: 0px;
+    background-color: #05a374;
+    color: white;
+    padding: 0px 8px 1px 8px;
+    border-radius: 4px;
+  }
+  
+  .forms-counter {
+    font-size: 14pt;
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  .cs-two {
+    margin-top: 0px;
+  }
+
+  .go-again-button {
+    font-size: 16pt;
+  }
+
+  .guess-form-container {
+    padding: 10px;
+    width: 90%;
+  }
+
+  .step-one-inputs-div {
+    width: 80%;
+    background-color:  #954E5A;
+    padding: 0px 10px;
+    border-radius: 8px;
+    border:  #6d3941 8px solid;
+    height: 100px;
+    margin: 8px 0px;
+  }
+
+  .name-email-container > p {
+    /* width: 90%; */
+    width: 90%;
+  }
+
+  .breed-choices-container {
+    padding: 10px;
+  }
+  .breed-choices-container > p {
+    /* width: 90%; */
+    width: 90%;
+  }
+
+  .breed-input {
+    width: auto;
+    /* font-size: 10pt; */
+  }
+
+  .datalist-container {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 82%;
+    background-color:  #954E5A;
+    padding: 0px 10px;
+    border-radius: 8px;
+    border:  #6d3941 8px solid;
+    margin-bottom: 5px;
+  }
+
+  .step-three-p {
+    width: 90%;
+  }
+
+  .nala-circle {
+    height: 60vw;
+    border: #05a374 20px solid;
+    border-radius: 300px;
+    margin-bottom: 5px;
+  }
+
+  .embark-link-sentence {
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  .predicted-weight-container {
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    background-color:  #954E5A;
+    padding: 0px 10px;
+    border-radius: 8px;
+    border:  #6d3941 8px solid;
+    height: 70px;
+    margin-bottom: 20px;
+  }
+
+  .submit-button {
+    width: 50%;
+  }
+
+  .predicted-weight-container {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+
+  .step-title {
+    font-size: 20pt;
+  }
+
+  .scoring-guide-div {
+    display: flex;
+    justify-content: center;
+  }
+
+  .scoring-guide-div > h3 {
+    width: 90%;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 767px) {
+
+  .opening-paragraph-l1 {
+    font-size: 16pt;
+    font-weight: 800;
+    width: 88%;
+    margin-top: 8px;
+  }
+  
+  .opening-paragraph-l2 {
+    font-size: 14pt;
+    font-weight: 700;
+    width: 76%;
+    margin-top: 8px;
+  }
+  
+  .opening-paragraph-l3 {
+    font-size: 12pt;
+    font-weight: 600;
+    width: 75%;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .scoring-guide-div > h3 {
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  .step-one-inputs-div {
+  justify-content: center;
+    width: 80%;
+    background-color:  #954E5A;
+    padding: 0px 10px;
+    border-radius: 8px;
+    border:  #6d3941 8px solid;
+    height: 120px;
+    margin: 8px 0px;
+  }
+
+  .name-input {
+    margin-bottom: 6px;
+  }
+
+  .email-input {
+    margin-top: 6px;
+  }
+
+  .datalist-container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 82%;
+    background-color:  #954E5A;
+    padding: 0px 10px;
+    border-radius: 8px;
+    border:  #6d3941 8px solid;
+    margin-bottom: 5px;
+  }
+
+  .nala-circle {
+    height: 50vw;
+    border: #05a374 20px solid;
+    border-radius: 300px;
+    margin-bottom: 5px;
+  }
+
+  .submit-button {
+    width: 50%;
+    font-size: 14pt;
+  }
+
+  .step-title {
+    font-size: 24pt;
+  }
+
+  .scoring-guide-div {
+    width: 80%;
+  }
+
+  .step-three-p {
+    margin-bottom: 4px;
+  }
+
+  .thank-you-h1 {
+    font-size: 20pt;
+  }
+
+  th {
+    font-size: 12pt;
+    padding-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .table-summary-title {
+    font-size: 12pt;
+  }
+}
+
+@media only screen and (min-width: 425px) and (max-width: 767px) {
+  .breed-input {
+    width: 46vw;
+  }
+
+  .breed-choices-container > p {
+    width: 70%;
+  }
+
+  .embark-link-sentence {
+    margin-bottom: 4px;
+  }
+
+  .thank-you-h1 {
+    font-size: 24pt;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1440px){
+  .nala-circle {
+    height: 240px;
+  }
 }

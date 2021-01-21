@@ -664,11 +664,11 @@ function App() {
                 placeholder="%"
               />
             </div>
-            <h5 className="embark-link-sentence">Need some inspiration or information about the different breeds? Check out the <a href="https://embarkvet.com/resources/dog-breeds/">350+ dog breeds</a> Embark tests for.</h5>
+            <h5 className="embark-link-sentence">Need some inspiration or information about the different breeds? Check out the <a target="_blank" rel="noopener noreferrer" href="https://embarkvet.com/resources/dog-breeds/">350+ dog breeds</a> Embark tests for.</h5>
           </div>
           <img className="nala-circle" alt="nala cutout" src={nalaCircle}></img>
           <h3 className="step-title">Step 3</h3>
-          <p>
+          <p className="step-three-p">
             Enter your guess for Nala's predicted adult weight, then you're
             ready to submit!
           </p>
@@ -689,7 +689,7 @@ function App() {
           <div className="scoring-guide-div">
             <h3>
               Want to learn about the scoring system? Check out the{" "}
-              <a href="https://docs.google.com/document/d/1ZV9TeVTspGCi58wLo323N_OezzcLBhZD3LAljw_0gCs/edit?usp=sharing">
+              <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1ZV9TeVTspGCi58wLo323N_OezzcLBhZD3LAljw_0gCs/edit?usp=sharing">
                 Scoring Guide
               </a>
             </h3>
@@ -705,27 +705,27 @@ function App() {
               <th>Percentages</th>
             </tr>
             <tr>
-              <td>Guess 1</td>
+              <td>1</td>
               <td>{breedOne}</td>
               <td>{percentOne}%</td>
             </tr>
             <tr>
-              <td>Guess 2</td>
+              <td>2</td>
               <td>{breedTwo}</td>
               <td>{percentTwo}%</td>
             </tr>
             <tr>
-              <td>Guess 3</td>
+              <td>3</td>
               <td>{breedThree}</td>
               <td>{percentThree}%</td>
             </tr>
             <tr>
-              <td>Guess 4</td>
+              <td>4</td>
               <td>{breedFour}</td>
               <td>{percentFour}%</td>
             </tr>
             <tr>
-              <td>Guess 5</td>
+              <td>5</td>
               <td>{breedFive}</td>
               <td>{percentFive}%</td>
             </tr>
@@ -738,7 +738,7 @@ function App() {
           </table>
 
           <h3 className="closing-sentence">We will send you an e-mail at <span className="email-span">{userEmail}</span> when Nala's Embark results come in, and the top 3 scores will be recognized!</h3>
-          <h4 className="closing-sentence">Want to do another one? Sounds good! Submit as many entries as your heart desires!</h4>
+          <h4 className="closing-sentence cs-two">Want to do another one? Sounds good! Submit as many entries as your heart desires!</h4>
           <button className="go-again-button" onClick={() => goAgain()}>
             Go again!
           </button>
