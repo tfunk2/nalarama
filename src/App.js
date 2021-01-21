@@ -4,6 +4,7 @@ import nalaFace from "./images/nala-face.png";
 import nalaFaceReverse from "./images/nala-face-reverse.png";
 import nalaCircle from "./images/nala-circle.png";
 import nalaCutout from "./images/nala-cutout-1.png";
+import nalaYawning from "./images/nala-yawning.png";
 
 function App() {
   const [breedOne, setBreedOne] = useState("");
@@ -738,6 +739,11 @@ function App() {
           </table>
 
           <h3 className="closing-sentence">We will send you an e-mail at <span className="email-span">{userEmail}</span> when Nala's Embark results come in, and the top 3 scores will be recognized!</h3>
+          <img
+              className="nala-yawning"
+              alt="nala yawning"
+              src={nalaYawning}
+          ></img>
           <h4 className="closing-sentence cs-two">Want to do another one? Sounds good! Submit as many entries as your heart desires!</h4>
           <button className="go-again-button" onClick={() => goAgain()}>
             Go again!

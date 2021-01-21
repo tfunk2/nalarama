@@ -363,6 +363,13 @@ table {
   margin-top: 0px;
 }
 
+.nala-yawning {
+  height: auto;
+  width: 20vw;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
 @media only screen and (min-width: 300px) and (max-width: 767px) {
   td, th {
     padding: 4px;
@@ -545,6 +552,13 @@ table {
     width: 90%;
     text-align: center;
   }
+
+  .nala-yawning {
+    height: auto;
+    width: 80%;
+    align-self: center;
+    margin-bottom: 20px;
+  }
 }
 
 @media only screen and (min-width: 375px) and (max-width: 767px) {
@@ -669,5 +683,11 @@ table {
 @media only screen and (min-width: 768px) and (max-width: 1440px){
   .nala-circle {
     height: 240px;
+  }
+  .nala-yawning {
+    height: auto;
+    width: 50%;
+    align-self: center;
+    margin-bottom: 20px;
   }
 }
