@@ -367,7 +367,7 @@ function App() {
   };
 
   const fetchSubmissions = () => {
-    fetch("http://localhost:3000/guess_form_submissions")
+    fetch("https://nalarama.herokuapp.com/guess_form_submissions")
       .then((response) => response.json())
       .then((guessForms) => {
         setAllGuessForms(guessForms);
@@ -391,7 +391,7 @@ function App() {
       parseInt(predictedWeight) > 0
     ) {
       event.preventDefault();
-      fetch("http://localhost:3000/guess_form_submissions", {
+      fetch("https://nalarama.herokuapp.com/guess_form_submissions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
