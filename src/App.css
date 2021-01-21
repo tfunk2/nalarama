@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Chango&display=swap");
 
 html {
   background-color: #03fcb1;
@@ -21,28 +21,26 @@ input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
 
 a {
-  color:#6d3941;
+  color: #6d3941;
+}
+
+a:visited {
+  color: #6d3941;
 }
 
 .main-title {
   text-align: center;
-  font-family: 'Chango', cursive;
+  font-family: "Chango", cursive;
   font-size: 10vw;
   color: white;
   transform: translate(-3%);
-  text-shadow: 
-    .5vw .5vw 0px #F2C14E, 
-    1vw 1vw 0px #F78154, 
-    1.5vw 1.5vw 0px #CC2936, 
-    2vw 2vw 0px #954E5A, 
-    2.5vw 2.5vw 0px #052939,
-    3vw 3vw 0px #05a374, 
-    3.5vw 3.5vw 0px #05a374, 
-    4vw 4vw 0px #05a374, 
+  text-shadow: 0.5vw 0.5vw 0px #f2c14e, 1vw 1vw 0px #f78154,
+    1.5vw 1.5vw 0px #cc2936, 2vw 2vw 0px #954e5a, 2.5vw 2.5vw 0px #052939,
+    3vw 3vw 0px #05a374, 3.5vw 3.5vw 0px #05a374, 4vw 4vw 0px #05a374,
     4.5vw 4.5vw 0px #05a374;
   margin-top: 0px;
   margin-bottom: 3vw;
@@ -55,7 +53,7 @@ a {
   padding: 5px;
   margin: 5px;
   border-radius: 4px;
-  border:  #6d3941 3px solid;
+  border: #6d3941 3px solid;
 }
 
 .breed-input {
@@ -63,15 +61,15 @@ a {
   width: 200px;
   padding: 5px;
   border-radius: 4px;
-  border:  #6d3941 3px solid;
+  border: #6d3941 3px solid;
 }
 
-.name-input, 
+.name-input,
 .email-input {
   width: 200px;
   padding: 5px;
   border-radius: 4px;
-  border:  #6d3941 3px solid;
+  border: #6d3941 3px solid;
 }
 
 .guess-form-container {
@@ -79,7 +77,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #F2C14E;
+  background-color: #f2c14e;
   height: auto;
   padding: 20px;
   margin-bottom: 50px;
@@ -93,7 +91,7 @@ a {
   align-items: center;
   justify-content: space-around;
   width: 90%;
-  background-color:  #F78154;
+  background-color: #f78154;
   padding: 5px 0px;
   height: 100%;
   padding: 20px;
@@ -107,18 +105,18 @@ a {
   align-items: center;
   justify-content: space-around;
   width: 302px;
-  background-color:  #954E5A;
+  background-color: #954e5a;
   padding: 0px 10px;
   border-radius: 8px;
-  border:  #6d3941 8px solid;
+  border: #6d3941 8px solid;
   margin-bottom: 10px;
 }
 
-.hundred-percent, 
+.hundred-percent,
 .percent-remaining {
   text-align: center;
   margin-bottom: 0px;
-  font-family: 'Chango', cursive;
+  font-family: "Chango", cursive;
   font-size: 20pt;
   margin-top: 10px;
 }
@@ -129,7 +127,7 @@ a {
 
 .step-title {
   margin: 0px;
-  font-family: 'Chango', cursive;
+  font-family: "Chango", cursive;
   font-size: 30pt;
 }
 
@@ -151,10 +149,10 @@ a {
   justify-content: space-around;
   align-items: center;
   width: 302px;
-  background-color:  #954E5A;
+  background-color: #954e5a;
   padding: 0px 10px;
   border-radius: 8px;
-  border:  #6d3941 8px solid;
+  border: #6d3941 8px solid;
   height: 70px;
   margin-bottom: 20px;
 }
@@ -165,10 +163,10 @@ a {
   justify-content: space-around;
   align-items: center;
   width: 302px;
-  background-color:  #954E5A;
+  background-color: #954e5a;
   padding: 0px 10px;
   border-radius: 8px;
-  border:  #6d3941 8px solid;
+  border: #6d3941 8px solid;
   height: 100px;
   /* margin-bottom: 20px; */
 }
@@ -178,7 +176,7 @@ a {
   padding: 5px;
   background-color: #05a374;
   color: antiquewhite;
-  font-family: 'Chango', cursive;
+  font-family: "Chango", cursive;
   border: #05a374 3px solid;
   border-radius: 4px;
   width: 160px;
@@ -234,7 +232,7 @@ p {
 }
 
 .successful-submission {
-  background-color: #F2C14E;
+  background-color: #f2c14e;
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 50px;
@@ -244,7 +242,7 @@ p {
 }
 
 .forms-counter-number {
-  font-family: 'Chango', cursive;
+  font-family: "Chango", cursive;
   font-size: 20pt;
   font-weight: 100;
   margin: 0px;
@@ -305,7 +303,7 @@ th {
   padding: 10px;
   padding-bottom: 0px;
   font-weight: 800;
-} 
+}
 
 td {
   text-align: center;
@@ -334,7 +332,7 @@ table {
 
 .email-span {
   font-weight: 100;
-  font-family: 'Chango', cursive;
+  font-family: "Chango", cursive;
 }
 
 .adult-weight-table {
@@ -347,7 +345,7 @@ table {
 }
 
 .thank-you-h1 > span {
-  font-family: 'Chango', cursive;
+  font-family: "Chango", cursive;
 }
 
 .scoring-guide-div {
@@ -378,7 +376,8 @@ table {
 }
 
 @media only screen and (min-width: 300px) and (max-width: 767px) {
-  td, th {
+  td,
+  th {
     padding: 4px;
   }
 
@@ -415,14 +414,14 @@ table {
     width: 98%;
     margin-top: 8px;
   }
-  
+
   .opening-paragraph-l2 {
     font-size: 14pt;
     font-weight: 700;
     width: 90%;
     margin-top: 8px;
   }
-  
+
   .opening-paragraph-l3 {
     font-size: 12pt;
     font-weight: 600;
@@ -446,7 +445,7 @@ table {
     padding: 0px 8px 1px 8px;
     border-radius: 4px;
   }
-  
+
   .forms-counter {
     font-size: 14pt;
     font-weight: 400;
@@ -470,10 +469,10 @@ table {
 
   .step-one-inputs-div {
     width: 80%;
-    background-color:  #954E5A;
+    background-color: #954e5a;
     padding: 0px 10px;
     border-radius: 8px;
-    border:  #6d3941 8px solid;
+    border: #6d3941 8px solid;
     height: 100px;
     margin: 8px 0px;
   }
@@ -502,10 +501,10 @@ table {
     align-items: center;
     justify-content: space-around;
     width: 82%;
-    background-color:  #954E5A;
+    background-color: #954e5a;
     padding: 0px 10px;
     border-radius: 8px;
-    border:  #6d3941 8px solid;
+    border: #6d3941 8px solid;
     margin-bottom: 5px;
   }
 
@@ -529,10 +528,10 @@ table {
     justify-content: space-around;
     align-items: center;
     width: 80%;
-    background-color:  #954E5A;
+    background-color: #954e5a;
     padding: 0px 10px;
     border-radius: 8px;
-    border:  #6d3941 8px solid;
+    border: #6d3941 8px solid;
     height: 70px;
     margin-bottom: 20px;
   }
@@ -569,21 +568,20 @@ table {
 }
 
 @media only screen and (min-width: 375px) and (max-width: 767px) {
-
   .opening-paragraph-l1 {
     font-size: 16pt;
     font-weight: 800;
     width: 88%;
     margin-top: 8px;
   }
-  
+
   .opening-paragraph-l2 {
     font-size: 14pt;
     font-weight: 700;
     width: 76%;
     margin-top: 8px;
   }
-  
+
   .opening-paragraph-l3 {
     font-size: 12pt;
     font-weight: 600;
@@ -599,12 +597,12 @@ table {
   }
 
   .step-one-inputs-div {
-  justify-content: center;
+    justify-content: center;
     width: 80%;
-    background-color:  #954E5A;
+    background-color: #954e5a;
     padding: 0px 10px;
     border-radius: 8px;
-    border:  #6d3941 8px solid;
+    border: #6d3941 8px solid;
     height: 120px;
     margin: 8px 0px;
   }
@@ -623,10 +621,10 @@ table {
     align-items: center;
     justify-content: space-around;
     width: 82%;
-    background-color:  #954E5A;
+    background-color: #954e5a;
     padding: 0px 10px;
     border-radius: 8px;
-    border:  #6d3941 8px solid;
+    border: #6d3941 8px solid;
     margin-bottom: 5px;
   }
 
@@ -687,7 +685,7 @@ table {
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1440px){
+@media only screen and (min-width: 768px) and (max-width: 1440px) {
   .nala-circle {
     height: 240px;
   }

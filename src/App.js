@@ -337,7 +337,6 @@ function App() {
   const alphabetOnly = (e) => {
     let alphabetRegex = /[a-zA-Z ]|-/;
     if (alphabetRegex.test(e.key)) {
-      console.log("alphabet letter");
     } else {
       e.preventDefault();
     }
@@ -346,26 +345,25 @@ function App() {
   const onlyThreeNumbers = (e) => {
     let threeNumbersRegex = /[0-9]/;
     if (threeNumbersRegex.test(e.key)) {
-      console.log("number only");
     } else {
       e.preventDefault();
     }
   };
 
   const resetForm = () => {
-    setUserName("")
-    setUserEmail("")
-    setBreedOne("")
-    setBreedTwo("")
-    setBreedThree("")
-    setBreedFour("")
-    setBreedFive("")
-    setPercentOne("0")
-    setPercentTwo("0")
-    setPercentThree("0")
-    setPercentFour("0")
-    setPercentFive("0")
-    setPredictedWeight("1")
+    setUserName("");
+    setUserEmail("");
+    setBreedOne("");
+    setBreedTwo("");
+    setBreedThree("");
+    setBreedFour("");
+    setBreedFive("");
+    setPercentOne("0");
+    setPercentTwo("0");
+    setPercentThree("0");
+    setPercentFour("0");
+    setPercentFive("0");
+    setPredictedWeight("1");
   };
 
   const fetchSubmissions = () => {
@@ -373,7 +371,6 @@ function App() {
       .then((response) => response.json())
       .then((guessForms) => {
         setAllGuessForms(guessForms);
-        console.log(guessForms);
       });
   };
 
@@ -415,11 +412,8 @@ function App() {
           percent_five: percentFive,
           predicted_adult_weight: predictedWeight,
         }),
-      })
-        .then(console.log("submit successful"))
-        .then(setIsFormSubmitted(true));
+      }).then(setIsFormSubmitted(true));
     } else {
-      console.log("submit failed");
       alert(
         "Submit failed, make sure you have the form completely filled out, then try again!"
       );
@@ -427,9 +421,9 @@ function App() {
   };
 
   const goAgain = () => {
-    setIsFormSubmitted(false)
-    resetForm()
-  }
+    setIsFormSubmitted(false);
+    resetForm();
+  };
 
   useEffect(() => {
     if (percentOne === "") {
@@ -665,7 +659,18 @@ function App() {
                 placeholder="%"
               />
             </div>
-            <h5 className="embark-link-sentence">Need some inspiration or information about the different breeds? Check out the <a target="_blank" rel="noopener noreferrer" href="https://embarkvet.com/resources/dog-breeds/">350+ dog breeds</a> Embark tests for.</h5>
+            <h5 className="embark-link-sentence">
+              Need some inspiration or information about the different breeds?
+              Check out the{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://embarkvet.com/resources/dog-breeds/"
+              >
+                350+ dog breeds
+              </a>{" "}
+              Embark tests for.
+            </h5>
           </div>
           <img className="nala-circle" alt="nala cutout" src={nalaCircle}></img>
           <h3 className="step-title">Step 3</h3>
@@ -690,7 +695,11 @@ function App() {
           <div className="scoring-guide-div">
             <h3>
               Want to learn about the scoring system? Check out the{" "}
-              <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1ZV9TeVTspGCi58wLo323N_OezzcLBhZD3LAljw_0gCs/edit?usp=sharing">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://docs.google.com/document/d/1ZV9TeVTspGCi58wLo323N_OezzcLBhZD3LAljw_0gCs/edit?usp=sharing"
+              >
                 Scoring Guide
               </a>
             </h3>
@@ -698,7 +707,9 @@ function App() {
         </div>
       ) : (
         <div className="successful-submission">
-          <h1 className="thank-you-h1">Thanks for participating <span>{userName}</span>!</h1>
+          <h1 className="thank-you-h1">
+            Thanks for participating <span>{userName}</span>!
+          </h1>
           <table>
             <tr>
               <th className="table-summary-title">Summary</th>
@@ -734,17 +745,26 @@ function App() {
           <table className="adult-weight-table">
             <tr>
               <td>Adult Weight Guess</td>
-              <td>{predictedWeight} {predictedWeight === 1 ? "lb" : "lbs."}</td>
+              <td>
+                {predictedWeight} {predictedWeight === 1 ? "lb" : "lbs."}
+              </td>
             </tr>
           </table>
 
-          <h3 className="closing-sentence">We will send you an e-mail at <span className="email-span">{userEmail}</span> when Nala's Embark results come in, and the top 3 scores will be recognized!</h3>
+          <h3 className="closing-sentence">
+            We will send you an e-mail at{" "}
+            <span className="email-span">{userEmail}</span> when Nala's Embark
+            results come in, and the top 3 scores will be recognized!
+          </h3>
           <img
-              className="nala-yawning"
-              alt="nala yawning"
-              src={nalaYawning}
+            className="nala-yawning"
+            alt="nala yawning"
+            src={nalaYawning}
           ></img>
-          <h4 className="closing-sentence cs-two">Want to do another one? Sounds good! Submit as many entries as your heart desires!</h4>
+          <h4 className="closing-sentence cs-two">
+            Want to do another one? Sounds good! Submit as many entries as your
+            heart desires!
+          </h4>
           <button className="go-again-button" onClick={() => goAgain()}>
             Go again!
           </button>
