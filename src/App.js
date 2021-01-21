@@ -698,7 +698,7 @@ function App() {
         </div>
       ) : (
         <div className="successful-submission">
-          <h1 className="thank-you-h1">Thanks for participating {userName}!</h1>
+          <h1 className="thank-you-h1">Thanks for participating <span>{userName}</span>!</h1>
           <table>
             <tr>
               <th className="table-summary-title">Summary</th>
