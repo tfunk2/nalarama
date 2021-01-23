@@ -425,6 +425,14 @@ function App() {
     resetForm();
   };
 
+  const checking = () => {
+    if(allGuessForms.length >= 1) {
+      return allGuessForms.length
+    } else {
+      return "Checking..."
+    }
+  }
+
   useEffect(() => {
     if (percentOne === "") {
       setPercentOne("0");
@@ -497,7 +505,7 @@ function App() {
         </h5>
         <h3 className="forms-counter">
           Entries so far:{" "}
-          <span className="forms-counter-number">{allGuessForms.length}</span>
+          <span className="forms-counter-number">{checking()}</span>
         </h3>
       </div>
       {/* percentUsed should have to be 0 in order to submit form */}
